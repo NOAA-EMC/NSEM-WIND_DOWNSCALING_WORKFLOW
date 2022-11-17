@@ -6,7 +6,7 @@
 module load hpss
  hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_ida/*.tar
 
-# extract only specific files (for example ida09l.2021082818.hwrfprs.storm.0p015.f008.grb2 ) data from tar file with command
+### extract only specific files (for example ida09l.2021082818.hwrfprs.storm.0p015.f008.grb2 ) data from tar file with command
 
 #tar -xf ida09l.202108*.tar --wildcards --no-anchored '*hwrfprs.storm*.grib2' // reading all tar files at once and extract the specific data input files
 
