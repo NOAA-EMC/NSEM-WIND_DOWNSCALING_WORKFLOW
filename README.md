@@ -1,92 +1,113 @@
-# NSEM-workflow
 
-## Overview  
+
+
+
+# HWRF DATA DOWNLOAD FROM HPSS
+module load hpss
+ hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_ida/*.tar
+
+# extract only specific files (for example ida09l.2021082818.hwrfprs.storm.0p015.f008.grb2 ) data from tar file with command
+
+#tar -xf ida09l.202108*.tar --wildcards --no-anchored '*hwrfprs.storm*.grib2' // reading all tar files at once and extract the specific data input files
+
+# we extracted 2 days data for Hurricane Ida
+ # for example 
+ tar -xf ida09l.2021082818.tar --wildcards --no-anchored '*hwrfprs.storm*.grb2'
+ tar -xf ida09l.2021082900.tar --wildcards --no-anchored '*hwrfprs.storm*.grb2'
+
+#_________________
+
+# Move the extracted data to the WPS Directory
+
+  mv *hwrfprs.storm* ../WPS/
+
+  cd ../WPS
   
-This is a workflow developed to perform post-storm assessments for NOAA's COASTAL Act 
-using the NEMS/NUOPC/ESMF coupling framework (see Figure 1). The coupled model components managed by 
-this workflow is ADCIRC, unstructured WAVEWATCH III, and the National Water Model. 
-Atmospheric forcing is provided by a data model, reading pre-prepared fields.  
-  
-## Set up system  
-  
-After cloning the codebase, set up an environment variable `$NSEMdir` that points to the 
-location of the cloned code. The executable folder `$NSEMdir/exec/` should contain the following 
-binaries from the NEMS app ADC-WW3-NWM-DATM:  
-  
-    adcprep  
-    tidefac  
-    ww3_ounf  
-    ww3_grid  
-    ww3_bound  
-    NEMS.x  
-  
-In the sub-directories `$NSEMdir/ecf/` and `$NSEMdir/jobs/`, set up the location of the scratch space to run 
-the application in the following root environment variables:  
-  
-    $DATAROOT  
-    $GESROOT  
-    $COMROOT  
-  
-## Perform a post-storm assessment  
-   
-a) Change directory to the ecFLow scripts:
-  
-    $ cd $NSEMdir/ecf  
+ # Download GFS data to provide land surface  datasets Note: HWRF model just provides 10-meters  hight and up data. 
 
-b) Set the storm for which to perform the assessment, e.g.:  
+ # data sourc https://rda.ucar.edu/datasets/ds083.2
+ # create csh file to download data  get_gfsdata.csh
+  chmod 777 get_gfsdata.csh 
+  ./get_gfsdata.csh eHYViBlg   # eHYViBlg is password for rda ucar access data. anyone can create this
 
-    $ setenv STORM shinnecock  
-   
-c) For this storm, first perform the tidal spinup with ADCIRC, starting with a prep step. For this we use 
-a specialized prep job in which `RUN_TYPE` is set to `tide_spinup`:  
-
-    $ sbatch jnsem_prep_spinup.ecf  
-  
-d) Once the inputs are prepared, execute the specialized spinup forecast job, in which `RUN_TYPE` is set to `tide_spinup`:   
-
-    $ sbatch jnsem_forecast_spinup.ecf  
-  
-e) The previous step will produce hotstart (restart) files of the spun-up model in the directory 
-`${GESROOT}/para/nsem.${PDY}/${STORM}/hotfiles`. Now the full forecast run sequence can be carried out. Start by specifying
-the coupled model configuration using the environment variable `RUN_TYPE`, e.g.:
-
-    $ setenv RUN_TYPE atm2wav2ocn  
-
-Currently the following `RUN_TYPE` options are supported:  
-
-    'tide_baserun'        # Tide-only forecast run with ADCIRC
-    'best_track2ocn'      # Best-track ATMdata used to force live ADCIRC  
-    'wav&best_track2ocn'  # Best-track ATMdata and WAVdata used to force live ADCIRC  
-    'atm2ocn'             # ATMdata used to force live ADCIRC  
-    'wav2ocn'             # WAVdata used to force live ADCIRC  
-    'atm&wav2ocn'         # ATMdata and WAVdata used to force live ADCIRC  
-    'atm2wav2ocn'         # ATMdata used to force live ADCIRC and WW3   
-
-f) Now sequentially run the prep, forecast and post jobs that comprise the complete coupled model run for the selected `RUN_TYPE`:
-
-    $ sbatch jnsem_prep.ecf  
-    $ sbatch jnsem_forecast.ecf  
-    $ sbatch jnsem_post.ecf  
-   
-g) The working directory of these runs is located in the scratch space:   
-   
-    ${DATAROOT}/${STORM}.${RUN_TYPE}.${PDY}  
-   
-h) The model output (after running the post job) is located in the scratch space under:  
-   
-    ${COMROOT}/nsem/para/${STORM}.${RUN_TYPE}.${PDY}  
-   
-i) The restart files for subsequent runs are located in the scratch space under:  
-   
-    ${GESROOT}/para/nsem.${PDY}/${STORM}  
+ # Once the data is downloaded - we have to go back to WPS folder
+ cd ../WPS
+ 
+ # FIRST STEP (GEOGRID.EXE)
+ 
+ # Edit namelist.wps 
+  Add high resolution elevaton dataset (10-meter)
+  Add highh resolution landuse dataset (30-meter)
+# for example 
+  geog_data_res = 'nlcd2011_1s+3dep_ida+30s' # for all 3 domains
 
 
-![](docs/nsem-workflow-060520.png)  
+#  Create Domain using WRFDOMAIN WIZARD for landfall location
+  Edit namelist.wps and add domain information  
+# run command for geogrid.exe 
+  sbatch job_geogrid.sh
 
-*Figure 1: Workflow diagram of NSEM deployed on Hera or WCOSS. Model data to be hosted in the Coastal Wind and Water Event Database (CWWED).*
+# SECOND STEP (UNGRIB.exe)
 
-## Disclaimer  
-  
-The United States Department of Commerce (DOC) GitHub project code is provided on an 'as is' basis and the user assumes responsibility for its use. DOC has relinquished control of the information and no longer has responsibility to protect the integrity, confidentiality, or availability of the information. Any claims against the Department of Commerce stemming from the use of its GitHub project will be governed by all applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply their endorsement, recommendation or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of a DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by DOC or the United States Government.
-   
-# nsem-wind-downscaling
+ Link HWRF grib file and run ungrig.exe  (Vtable for HWRF)
+ Link GFS_land file and run ungrib.exe (Vtable for GFS_land)
+
+ sbatch ungrib.exe
+
+
+$ THIRD STEP (METGRID.exe)
+ 
+ sbatch metgrid.exe
+
+
+**************************************************************
+
+RUN REAL 
+
+cd ../WRF/run
+
+# Edit namelist.input 
+
+sbatch job_real.exe
+
+
+*************************************************************
+
+RUN WRF
+
+cd ../WRF/run
+
+sbatch run_wrf.sh
+
+
+*************************************************************
+
+ADCRIC INUNDATION 
+
+# High Water mark implementation is made with two steps:
+
+1. ADCIRC High water mark is one dimensional dataset and unstructured. We have to map this data on to wrf grid. 
+ We have deveopled ncl scripts
+
+;This is an NCL/ESMF template file for regridding from an 
+; unstructured grid to a rectilinear grid. It uses ESMF_regrid
+; to do the regridding.
+
+  ncl < ESMF_unstruct_to_rect.ncl
+ 
+
+2. Now we have to map unstructured data on to wrf map and replace coastal land to  inundation. 
+
+ ncl <  var_regrid_domain.ncl
+
+3. Now replace land point to inundation grid points using ncl scripting
+
+ ncl < change_wrfrst.ncl 
+
+# Now WRF restart files can be used again to rerun the model with updated inundations. 
+ 
+
+ 
+
+
+
