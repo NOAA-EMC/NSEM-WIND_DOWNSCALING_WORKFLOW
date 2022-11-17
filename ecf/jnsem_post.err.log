@@ -1,0 +1,256 @@
++++ ls /scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm/storms
+++ export 'stormlist=dorian
+florence
+florence120m
+harvey
+harvey_all
+ida
+ike
+irene
+irma
+isabel
+iselle
+lane
+maria
+maria_all
+michael
+sandy
+shinnecock'
+++ stormlist='dorian
+florence
+florence120m
+harvey
+harvey_all
+ida
+ike
+irene
+irma
+isabel
+iselle
+lane
+maria
+maria_all
+michael
+sandy
+shinnecock'
+++ [[ dorian
+florence
+florence120m
+harvey
+harvey_all
+ida
+ike
+irene
+irma
+isabel
+iselle
+lane
+maria
+maria_all
+michael
+sandy
+shinnecock != *ida* ]]
+++ '[' atm2wav2ocn '!=' tide_spinup ']'
+++ '[' atm2wav2ocn '!=' tide_baserun ']'
+++ '[' atm2wav2ocn '!=' best_track2ocn ']'
+++ '[' atm2wav2ocn '!=' 'wav&best_track2ocn' ']'
+++ '[' atm2wav2ocn '!=' atm2ocn ']'
+++ '[' atm2wav2ocn '!=' atm2wav ']'
+++ '[' atm2wav2ocn '!=' wav2ocn ']'
+++ '[' atm2wav2ocn '!=' 'atm&wav2ocn' ']'
+++ '[' atm2wav2ocn '!=' atm2wav2ocn ']'
+++ export pgmout=OUTPUT.129409
+++ pgmout=OUTPUT.129409
+++ export pgm=NSEM
+++ pgm=NSEM
++++ date +%Y%m%d
+++ PDY=20220505
+++ export DATAROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data
+++ DATAROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data
+++ export DATA=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505
+++ DATA=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505
+++ export GESROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges
+++ GESROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges
+++ export NET=nsem
+++ NET=nsem
++++ echo pnsem_post
++++ awk -F_ '{print $2}'
+++ export RUN=post
+++ RUN=post
+++ export HOMEnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow
+++ HOMEnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow
+++ export FIXnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/fix
+++ FIXnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/fix
+++ export EXECnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/exec
+++ EXECnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/exec
+++ export SORCnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/sorc
+++ SORCnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/sorc
+++ export PARMnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm
+++ PARMnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm
+++ export USHnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush
+++ USHnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush
+++ export INPUTdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/input
+++ INPUTdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/input
+++ export RUNdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/run
+++ RUNdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/run
+++ export TMPdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/tmp
+++ TMPdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/tmp
+++ export LOGdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/logs
+++ LOGdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/logs
+++ export DEBUGGING=TRUE
+++ DEBUGGING=TRUE
+++ export DEBUG_LEVEL=1
+++ DEBUG_LEVEL=1
+++ export ISPRODUCTION=TRUE
+++ ISPRODUCTION=TRUE
+++ export SITETYPE=EMC
+++ SITETYPE=EMC
+++ export COMOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/com/nsem/para/ida.atm2wav2ocn.20220505
+++ COMOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/com/nsem/para/ida.atm2wav2ocn.20220505
+++ export GESOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ GESOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ export GESIN=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ GESIN=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ export COMINobs=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm/storms/ida
+++ COMINobs=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm/storms/ida
+++ /scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/scripts/exnsem_post.sh.ecf
+  File "/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush/postproc-nsemodel-ttest.py", line 141
+    obs = obs[obs lt 99.00]
+                  ^
+SyntaxError: invalid syntax
+++ date
++++ ls /scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm/storms
+++ export 'stormlist=dorian
+florence
+florence120m
+harvey
+harvey_all
+ida
+ike
+irene
+irma
+isabel
+iselle
+lane
+maria
+maria_all
+michael
+sandy
+shinnecock'
+++ stormlist='dorian
+florence
+florence120m
+harvey
+harvey_all
+ida
+ike
+irene
+irma
+isabel
+iselle
+lane
+maria
+maria_all
+michael
+sandy
+shinnecock'
+++ [[ dorian
+florence
+florence120m
+harvey
+harvey_all
+ida
+ike
+irene
+irma
+isabel
+iselle
+lane
+maria
+maria_all
+michael
+sandy
+shinnecock != *ida* ]]
+++ '[' atm2wav2ocn '!=' tide_spinup ']'
+++ '[' atm2wav2ocn '!=' tide_baserun ']'
+++ '[' atm2wav2ocn '!=' best_track2ocn ']'
+++ '[' atm2wav2ocn '!=' 'wav&best_track2ocn' ']'
+++ '[' atm2wav2ocn '!=' atm2ocn ']'
+++ '[' atm2wav2ocn '!=' atm2wav ']'
+++ '[' atm2wav2ocn '!=' wav2ocn ']'
+++ '[' atm2wav2ocn '!=' 'atm&wav2ocn' ']'
+++ '[' atm2wav2ocn '!=' atm2wav2ocn ']'
+++ export pgmout=OUTPUT.182362
+++ pgmout=OUTPUT.182362
+++ export pgm=NSEM
+++ pgm=NSEM
++++ date +%Y%m%d
+++ PDY=20220505
+++ export DATAROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data
+++ DATAROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data
+++ export DATA=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505
+++ DATA=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505
+++ export GESROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges
+++ GESROOT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges
+++ export NET=nsem
+++ NET=nsem
++++ echo pnsem_post
++++ awk -F_ '{print $2}'
+++ export RUN=post
+++ RUN=post
+++ export HOMEnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow
+++ HOMEnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow
+++ export FIXnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/fix
+++ FIXnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/fix
+++ export EXECnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/exec
+++ EXECnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/exec
+++ export SORCnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/sorc
+++ SORCnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/sorc
+++ export PARMnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm
+++ PARMnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm
+++ export USHnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush
+++ USHnsem=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush
+++ export INPUTdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/input
+++ INPUTdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/input
+++ export RUNdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/run
+++ RUNdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/run
+++ export TMPdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/tmp
+++ TMPdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/tmp
+++ export LOGdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/logs
+++ LOGdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/ida.atm2wav2ocn.20220505/logs
+++ export DEBUGGING=TRUE
+++ DEBUGGING=TRUE
+++ export DEBUG_LEVEL=1
+++ DEBUG_LEVEL=1
+++ export ISPRODUCTION=TRUE
+++ ISPRODUCTION=TRUE
+++ export SITETYPE=EMC
+++ SITETYPE=EMC
+++ export COMOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/com/nsem/para/ida.atm2wav2ocn.20220505
+++ COMOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/com/nsem/para/ida.atm2wav2ocn.20220505
+++ export GESOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ GESOUT=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ export GESIN=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ GESIN=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/data/nwges/para/nsem.20220505
+++ export COMINobs=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm/storms/ida
+++ COMINobs=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/parm/storms/ida
+++ /scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/scripts/exnsem_post.sh.ecf
+/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush/nsem_ttest.py:213: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  fig = plt.figure(figsize=(5,5), dpi=300)
+Traceback (most recent call last):
+  File "/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush/postproc-nsemodel-ttest.py", line 156, in <module>
+    p_array, success_array = run_ttest(model, obs, label, units)
+  File "/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow/ush/postproc-nsemodel-ttest.py", line 87, in run_ttest
+    stations = pd.read_csv(PARMnsem+'/storms/'+STORM+'/StationsWind.csv', header='infer', index_col="coordinate") 
+  File "/scratch2/NCEPDEV/marine/Matthew.Masarik/wavpy/miniconda3/lib/python3.9/site-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/scratch2/NCEPDEV/marine/Matthew.Masarik/wavpy/miniconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 680, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/scratch2/NCEPDEV/marine/Matthew.Masarik/wavpy/miniconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 581, in _read
+    return parser.read(nrows)
+  File "/scratch2/NCEPDEV/marine/Matthew.Masarik/wavpy/miniconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py", line 1250, in read
+    index, columns, col_dict = self._engine.read(nrows)
+  File "/scratch2/NCEPDEV/marine/Matthew.Masarik/wavpy/miniconda3/lib/python3.9/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 271, in read
+    values = data.pop(self.index_col[i])
+KeyError: 'coordinate'
+++ date
