@@ -17,34 +17,31 @@ hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_i
 
 ***************************************************
 
-# Move the extracted data to the WPS Directory
+## Move the extracted data to the WPS Directory
 
   mv *hwrfprs.storm* ../WPS/
-
   cd ../WPS
   
- # Download GFS data to provide land surface  datasets Note: HWRF model just provides 10-meters  hight and up data. 
-
- # data sourc https://rda.ucar.edu/datasets/ds083.2
- # create csh file to download data  get_gfsdata.csh
+### Download GFS data to provide land surface  datasets Note: HWRF model just provides 10-meters  hight and up data. 
+### data sourc https://rda.ucar.edu/datasets/ds083.2
+### create csh file to download data  get_gfsdata.csh
   chmod 777 get_gfsdata.csh 
   ./get_gfsdata.csh eHYViBlg   # eHYViBlg is password for rda ucar access data. anyone can create this
 
- # Once the data is downloaded - we have to go back to WPS folder
+### Once the data is downloaded - we have to go back to WPS folder
  cd ../WPS
  
- # FIRST STEP (GEOGRID.EXE)
+# FIRST STEP (GEOGRID.EXE)
  
- # Edit namelist.wps 
+### Edit namelist.wps 
   Add high resolution elevaton dataset (10-meter)
   Add highh resolution landuse dataset (30-meter)
-# for example 
+### for example 
   geog_data_res = 'nlcd2011_1s+3dep_ida+30s' # for all 3 domains
-
-
-#  Create Domain using WRFDOMAIN WIZARD for landfall location
+  
+###  Create Domain using WRFDOMAIN WIZARD for landfall location
   Edit namelist.wps and add domain information  
-# run command for geogrid.exe 
+### run command for geogrid.exe 
   sbatch job_geogrid.sh
 
 # SECOND STEP (UNGRIB.exe)
