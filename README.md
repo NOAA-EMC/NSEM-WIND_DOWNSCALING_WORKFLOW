@@ -15,7 +15,7 @@ hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_i
  tar -xf ida09l.2021082818.tar --wildcards --no-anchored '*hwrfprs.storm*.grb2'
  tar -xf ida09l.2021082900.tar --wildcards --no-anchored '*hwrfprs.storm*.grb2'
 
-#_________________
+***************************************************
 
 # Move the extracted data to the WPS Directory
 
