@@ -1,0 +1,4 @@
+#!/bin/bash
+export NSEMdir=/scratch2/COASTAL/coastal/save/Anil.Kumar/NSEM-workflow
+export STORM=ida
+export RUN_TYPE=atm2wav2ocn
