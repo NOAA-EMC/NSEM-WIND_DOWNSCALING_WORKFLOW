@@ -31,7 +31,9 @@ hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_i
 ### Once the data is downloaded - we have to go back to WPS folder
  cd ../WPS
  
-# FIRST STEP (GEOGRID.EXE)
+ *************************************************
+ 
+## FIRST STEP (GEOGRID.EXE)
  
 ### Edit namelist.wps 
   Add high resolution elevaton dataset (10-meter)
@@ -44,7 +46,9 @@ hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_i
 ### run command for geogrid.exe 
   sbatch job_geogrid.sh
 
-# SECOND STEP (UNGRIB.exe)
+*************************************************
+
+## SECOND STEP (UNGRIB.exe)
 
  Link HWRF grib file and run ungrig.exe  (Vtable for HWRF)
  Link GFS_land file and run ungrib.exe (Vtable for GFS_land)
@@ -52,36 +56,33 @@ hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_i
  sbatch ungrib.exe
 
 
-$ THIRD STEP (METGRID.exe)
+## THIRD STEP (METGRID.exe)
  
  sbatch metgrid.exe
 
-
 **************************************************************
 
-RUN REAL 
+## RUN REAL 
 
 cd ../WRF/run
 
-# Edit namelist.input 
+### Edit namelist.input 
 
 sbatch job_real.exe
 
-
 *************************************************************
 
-RUN WRF
+## RUN WRF
 
 cd ../WRF/run
 
 sbatch run_wrf.sh
 
-
 *************************************************************
 
-ADCRIC INUNDATION 
+## ADCRIC INUNDATION 
 
-# High Water mark implementation is made with two steps:
+### High Water mark implementation is made with two steps:
 
 1. ADCIRC High water mark is one dimensional dataset and unstructured. We have to map this data on to wrf grid. 
  We have deveopled ncl scripts
@@ -101,10 +102,6 @@ ADCRIC INUNDATION
 
  ncl < change_wrfrst.ncl 
 
-# Now WRF restart files can be used again to rerun the model with updated inundations. 
+## Now WRF restart files can be used again to rerun the model with updated inundations. 
  
-
- 
-
-
 
