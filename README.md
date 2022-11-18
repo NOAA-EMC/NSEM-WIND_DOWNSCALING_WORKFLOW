@@ -4,14 +4,14 @@
 
 ## HWRF DATA DOWNLOAD FROM HPSS
 module load hpss
- hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_ida/*.tar
+hsi get /NCEPDEV/emc-hwrf/5year/Zaizhong.Ma/coastal/hiresmasks/ida_2021/expens_ida/*.tar
 
 ### extract only specific files (for example ida09l.2021082818.hwrfprs.storm.0p015.f008.grb2 ) data from tar file with command
 
 #tar -xf ida09l.202108*.tar --wildcards --no-anchored '*hwrfprs.storm*.grib2' // reading all tar files at once and extract the specific data input files
 
-# we extracted 2 days data for Hurricane Ida
- # for example 
+### we extracted 2 days data for Hurricane Ida
+### for example 
  tar -xf ida09l.2021082818.tar --wildcards --no-anchored '*hwrfprs.storm*.grb2'
  tar -xf ida09l.2021082900.tar --wildcards --no-anchored '*hwrfprs.storm*.grb2'
 
